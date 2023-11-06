@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Weather from "./components/weather";
 import "./App.css";
 import logo from "./logo.svg";
+import "./components/styles.css";
 import { Card, CardContent } from "semantic-ui-react";
 
 export default function App() {
@@ -38,15 +39,7 @@ export default function App() {
           <Weather weatherData={data.list[7]} />
           <Weather weatherData={data.list[14]} />
           <Weather weatherData={data.list[21]} />
-          <Weather weatherData={data.list[28]} />
-          <p>
-            Sunrise:{" "}
-            {new Date(data.city.sunrise * 1000).toLocaleTimeString("en-CA")}
-          </p>
-          <p>
-            Sunset:{" "}
-            {new Date(data.city.sunset * 1000).toLocaleTimeString("en-CA")}
-          </p>
+          <Weather weatherData={data.list[29]} />
         </span>
       ) : (
         <div>
