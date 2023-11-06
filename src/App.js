@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Weather from "./components/weather";
 import "./App.css";
 import logo from "./logo.svg";
+import { Card, CardContent } from "semantic-ui-react";
 
 export default function App() {
   const [lat, setLat] = useState();
@@ -16,7 +17,7 @@ export default function App() {
       });
 
       await fetch(
-        `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
+        `${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${lon}&APPID=${process.env.REACT_APP_API_KEY}`
       )
         .then((res) => res.json())
         .then((result) => {
@@ -30,8 +31,23 @@ export default function App() {
 
   return (
     <div className="App">
-      {typeof data != "undefined" && typeof data.main != "undefined" ? (
-        <Weather weatherData={data} />
+      {typeof data != "undefined" && typeof data.city != "undefined" ? (
+        <span>
+          <Card.Header className="header">City: {data.city.name}</Card.Header>
+          <Weather weatherData={data.list[0]} />
+          <Weather weatherData={data.list[7]} />
+          <Weather weatherData={data.list[14]} />
+          <Weather weatherData={data.list[21]} />
+          <Weather weatherData={data.list[28]} />
+          <p>
+            Sunrise:{" "}
+            {new Date(data.city.sunrise * 1000).toLocaleTimeString("en-CA")}
+          </p>
+          <p>
+            Sunset:{" "}
+            {new Date(data.city.sunset * 1000).toLocaleTimeString("en-CA")}
+          </p>
+        </span>
       ) : (
         <div>
           <header className="App-header">
