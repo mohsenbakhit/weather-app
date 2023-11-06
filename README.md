@@ -78,4 +78,4 @@ This app uses the OpenWeather API to fetch weather data. To use the API, you'll 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
